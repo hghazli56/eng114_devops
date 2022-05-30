@@ -37,14 +37,11 @@ A development environment is needed so that teams can monitor, test for and fix 
 ![4 pillars of devops](https://cdn.rd.gt/wp-content/uploads/2017/10/word-image-21-1024x226.png) 
 
 - Tools: Using the right tools to achieve the goal
-<br>
-<br>
+
 - Process: Ensuring an effective chain of tasks that can adapt to often unpredictable real-world circumstances
-<br>
-<br> 
+
 - People: Understanding that people are at the center of all this (practically the whole point), and aiming to maximize not just communication and collaboration but also the needs of the wide range of stakeholders 
-<br>
-<br>
+
 - Culture: With people comes culture and in DevOps it is very important to apply a culture that considers the needs of all parties in the development lifecycle as well as setting rules, customs and expectations with the right balance of order and freedom(along with the occasional chaos) to ensure a consistent value system for everyone involved
 <br>
 <br>  
