@@ -80,6 +80,33 @@ create a file `touch filename.extension` or `vim filename.extension` to go into 
 - stop then start
 - Command for running script `sudo ./provision.sh`
 
+### Vagrant automation
+
+With Vagrantfile we can set instructions for a managed VM to carry out. Such instructions can  include:
+
+-  `config.vm.box = "ubuntu/xenial64"` This installs a specified os onto the VM
+
+- `config.vm.network "private_network", ip: "192.168.10.100"` This assigns the VM to an IP address within the private network
+
+- `config.vm.provision "file", source: "~/week3/file.sh", destination: "$HOME/"` This uses the "file" provision to copy a file/folder from the local machine to the VM
+
+- `config.vm.provision "shell",
+    inline: "sudo chmod +x file.sh  && sudo ./file.sh"` We can also use the "shell" provision to directly run bash commands on the VM
+
+
+
+### Bash scripts
+If we want to run a command or a group of commands multiple times, we can create a .sh file that stores our commands that we wish to repeat.
+
+- `touch filename.sh` This creates the file
+
+- `vim filename.sh` this allows us to add our commands into the .sh file
+
+- `sudo chmod +x filename.sh` This changes the file permission, allowing us to execute it
+
+- `./filename.sh` Assuming we are in the same directory as the .sh file, we run this command to execute it which will trigger the commands inside to run sequentially
+
+ 
 
 
 
