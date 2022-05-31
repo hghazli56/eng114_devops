@@ -69,6 +69,17 @@ create a file `touch filename.extension` or `vim filename.extension` to go into 
 - e.g. `chmod +x filename`
 - there are also number codes for combinations of permissions 
 
+### Bash Scripting
+- create a file called provision.sh
+- change permission of this file `chmod +x provision.sh`
+- first line MUST BE `#!/bin/bash` 
+- update & upgrade
+- install nginx
+- start nginx
+- `enable nginx`
+- stop then start
+
+
 
 
 
