@@ -78,7 +78,7 @@ create a file `touch filename.extension` or `vim filename.extension` to go into 
 - start nginx
 - `enable nginx`
 - stop then start
-
+- Command for running script `sudo ./provision.sh`
 
 
 
