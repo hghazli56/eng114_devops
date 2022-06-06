@@ -106,6 +106,20 @@ If we want to run a command or a group of commands multiple times, we can create
 
 - `./filename.sh` Assuming we are in the same directory as the .sh file, we run this command to execute it which will trigger the commands inside to run sequentially
 
+### Creating Variables in Linux
+- `vim ~/.bashrc` Opens bashrc file where environment variables can be stored
+
+- Then we edit the bottom of the file with `ENV='env_value'`
+
+- Save and exit
+
+- `source ~/.bashrc` To load new bashrc configuration with our new variable(S) 
+
+- `printenv <variable name>` Prints value for chosen variable
+
+- Now the environment variable is stored globally and not just for the session
+
+
  
 
 
