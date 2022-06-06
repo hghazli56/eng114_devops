@@ -14,6 +14,4 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell",
     inline: "sudo chmod +x file.sh && sudo ./file.sh"
     
-  config.vm.provision "shell",
-    inline:"sudo mv default /etc/nginx/sites-available/default && sudo systemctl restart nginx"
 end
