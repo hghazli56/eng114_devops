@@ -19,7 +19,7 @@ sudo npm install pm2 -g
 
 sudo apt-get install python-software-properties -y
 
-sudo mv default /etc/nginx/sites-available/default # Overwrite original nginx default file with our confuration
+sudo mv default /etc/nginx/sites-available/default # Overwrite original nginx default file with our configuration
 
 sudo systemctl restart nginx
 
