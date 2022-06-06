@@ -109,16 +109,29 @@ If we want to run a command or a group of commands multiple times, we can create
 ### Creating Variables in Linux
 - `vim ~/.bashrc` Opens bashrc file where environment variables can be stored
 
-- Then we edit the bottom of the file with `ENV='env_value'`
+- Then we edit the bottom of the file with `export ENV='env_value'`
 
 - Save and exit
 
-- `source ~/.bashrc` To load new bashrc configuration with our new variable(S) 
+- `source ~/.bashrc` To load new bashrc configuration with our new variable(s) 
 
 - `printenv <variable name>` Prints value for chosen variable
 
 - Now the environment variable is stored globally and not just for the session
 
+### Nginx forward to port
+
+- The app by default runs on port 3000. We want it to run on the default port. We can do this by editing the default file in `/etc/nginx/sites-available`.
+
+- We then find the location block and replace it with the following lines:
+- `proxy_pass http://localhost:3000;` NOTE: Here we enter the original port number that the app ran on
+- `proxy_http_version 1.1;`
+- `proxy_set_header Upgrade $http_upgrade;`
+- `proxy_set_header Connection 'upgrade';`
+- `proxy_set_header Host $host;`
+- `proxy_cache_bypass $http_upgrade;`
+- Then the save the file and run `sudo systemctl restart nginx` to reload nginx with the new configurations
+- Now we should be able to access our webapp just by typing the vm ip address without the original port number 
 
  
 

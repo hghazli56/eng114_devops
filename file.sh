@@ -23,7 +23,7 @@ cd app/app/
 
 npm install
 
-npm start -d
+npm start &
 
 exit
 
