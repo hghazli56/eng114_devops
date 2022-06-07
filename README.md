@@ -133,6 +133,30 @@ If we want to run a command or a group of commands multiple times, we can create
 - Then the save the file and run `sudo systemctl restart nginx` to reload nginx with the new configurations
 - Now we should be able to access our webapp just by typing the vm ip address without the original port number 
 
+### Processes in Linux
+
+- `top` or `ps aux` Displays list of currently running processes
+- `sudo kill <process_id>` stops a specified process
+- `|` Is piping where we sort oe short list processes
+- `head` and `tail` can be used for top-down or bottom-up
+
+### Connecting webapp to a Database
+- First we need to create another VM that will host our DB
+- Our DB will run on the same OS as our original VM (Ubuntu 16.04)
+- Then we will install the correct version of MongoDB
+- Then we will need to allow the required access; by allowing the ip of our app machine to connect to our DB
+- In our app machine we will need to create an environment variable called DB_HOST (See file.sh for command)
+- We will cd into /etc
+- `sudo nano mongod.conf`- By default it allows access to 127.0.0.1 with port 27017
+- edit `mongod.conf` to allow app ip or for the ease of use allow all (not best practice for prod env)
+- `0.0.0.0` (See mongo.conf file in repo. This conf file will replace the original in the DB vm)
+- restart and enable mongodb
+- Common errors include:
+- DB_HOST not found, env var created on DB machine
+- Users should not be allowed to directly access the DB
+
+
+
  
 
 

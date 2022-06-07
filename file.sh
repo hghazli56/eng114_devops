@@ -23,13 +23,17 @@ sudo mv default /etc/nginx/sites-available/default # Overwrite original nginx de
 
 sudo systemctl restart nginx
 
+sudo echo "export DB_HOST='mongodb://192.168.10.150:27017/posts'" >> /etc/bash.bashrc # Add env var DB_HOST to .bashrc file
+
+source /etc/bash.bashrc # NOTE: using ~ will not work in a bash script so use the exact path when running comands in a .sh file
+
 cd app/app/
 
-npm install
+node seeds/seed.js
+# npm install
 
-npm start -d
+# npm start -d
 
-exit
 
 
 
