@@ -29,10 +29,11 @@ source /etc/bash.bashrc # NOTE: using ~ will not work in a bash script so use th
 
 cd app/app/
 
-node seeds/seed.js
-# npm install
+#npm install
 
-# npm start -d
+#node seeds/seed.js # seeds the database incase db content does not appear on /routes page
+
+#npm start -d
 
 
 

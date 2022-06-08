@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
 
-  config.vm.define "app" do |app|
+    config.vm.define "app" do |app|
     app.vm.box = "ubuntu/xenial64"
 
   # add a private network between localhost & VM using ip
@@ -30,7 +30,5 @@ Vagrant.configure("2") do |config|
     inline: "sudo chmod +x dbprovision.sh && sudo ./dbprovision.sh"
 
   end
-
-
 
 end
