@@ -211,8 +211,10 @@ If we want to run a command or a group of commands multiple times, we can create
 
 - Keeping in compliance with the data laws of specific regions
 
-### AWS resource naming convetions
-- `eng114_hghazli_<resouce type>`
+### AWS notes
+- Naming conventions: `eng114_hghazli_<resouce type>`
+
+- SCP command to copy file from localhost to ec2 on AWS: `scp -i .ssh/<ssh_key_name>.pem -r  path/of/local/file user@target_vm_address:target/path/`
 
 
 
