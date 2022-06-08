@@ -37,6 +37,8 @@ cd app/app/
 
 #npm start -d
 
+# nohup node app.js > /dev/null 2>&1 & #This starts the app in the background 
+
 
 
 
