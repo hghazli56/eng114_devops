@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
 
   db.vm.network "private_network", ip: "192.168.10.150"
 
-  db.vm.provision "file", source: "~/week3/mongod.conf", destination: "$HOME/"
+  db.vm.provision "file", source: "~/week3/mongod.conf", destination: "$HOME/" # Copy mongod.conf file to home directory on DB vm
 
   db.vm.provision "file", source: "~/week3/dbprovision.sh", destination: "$HOME/"
 

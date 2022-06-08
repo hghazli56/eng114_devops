@@ -155,6 +155,67 @@ If we want to run a command or a group of commands multiple times, we can create
 - DB_HOST not found, env var created on DB machine
 - Users should not be allowed to directly access the DB
 
+## Cloud Computing
+<br></br>
+![Cloud computing diagram](https://miro.medium.com/max/640/1*ngkHgQq7ij1NBNr62er3zA.png) 
+
+- Cloud Computing is the delivery of computing services over the internet via off premise data centres run by the cloud provider
+
+- Customers have access to a wide range of computing services (vms, databases, networking etc.) and commonly pay for how much of these services they use (pay per minute)
+
+- Cloud providers are solely responsible for the physical maintenance and security of hardware and data within their data centres however, their is a shared responsibility model in place depending on the service the customer wants (SaaS, PaaS, IaaS)
+
+### Costs: On-prem vs Cloud
+- Starting an on-prem center comes with capital expenditure where an investment in hardware is needed to keep it running (which can be very large)
+
+- There are also operational costs (operational expenditure) that come with on-prem centers which usually include staff salaries, electricity, rent etc.
+
+- On a basic level, using a cloud provider comes only with operational costs. The OpEx business model is sustainable for cloud providers due to economies of scale because of their large-scale hardware deployment    
+
+### Benefits of Cloud Computing 
+- No CapEx: Because of the cloud computing business model, it's customers can have systems up and running without a large initial investment
+
+- Flexibility: Customers can quickly start-up (and experiment with) and get rid of resources as their needs and requirements change without any CapEX
+
+- Shared responsibility: Because of the shared responsibility model, cloud customers wil never have to take responsibility for the physical maintenance and security of hardware which also helps with costs
+
+![costs diagram](https://mccinnovations.com/wp-content/uploads/2021/12/OpEx-CapEx-Cloud_Iceberg-1.png) 
+
+
+
+
+
+
+### Monolith architecture
+
+- Monolith architecture is the design of code where all functionality occurs in one place (front-end, back-end, database)
+
+- Monolith architecture is suited more for smaller applications that do not need to regularly change (e.g. adding functionality)) and have a small user base
+
+![monolith architecture](https://miro.medium.com/max/714/1*F6y9GeBZwaOzNYnToahfQw.png) 
+
+### Two-Tier architecture
+
+![two-tier architecture](https://miro.medium.com/max/402/1*aQpfQ6s4kd_pKpYnD2xkyQ.png) 
+
+- This is where the data layer is separate from the rest of the code-base e.g. the database runs on a separate machine from the application
+
+### Location based services
+![location based services](https://docs.microsoft.com/en-us/azure/availability-zones/media/availability-zones.png) 
+- Cloud providers have data centers all around the planet. The benefits of this include:
+<br></br>
+
+- Center redundancy (cloud providers have multiple centers in regions known as Availability Zones)
+
+- Reduced latency depending on end user location (clients will want to deploy their systems in data centers that are as close to the user base as possible)
+
+- Keeping in compliance with the data laws of specific regions
+
+### AWS resource naming convetions
+- `eng114_hghazli_<resouce type>`
+
+
+
 
 
  

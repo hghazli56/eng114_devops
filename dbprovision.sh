@@ -19,6 +19,7 @@ sudo mv mongod.conf /etc/mongod.conf
 
 sudo systemctl restart mongod
 sudo systemctl enable mongod
+# After mongod.conf file is changed, we need to restart and enable mongodb so new confgiuations are in effect
 
 
 
