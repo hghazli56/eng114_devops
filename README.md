@@ -211,10 +211,29 @@ If we want to run a command or a group of commands multiple times, we can create
 
 - Keeping in compliance with the data laws of specific regions
 
+### AWS creating instances and instances from Amazon Machine Images (AMIs)
+- In the AWS dashboard, select `Services` and choose `ec2`
+- Click on `Launch instance` and go through the menu, selecting your desired operating system, compute power, storage, network, subnet, tags and security groups
+- Review everything and launch
+- You can create security groups by entering `security groups` in the dashboard search bar
+- Configure your ec2 however you like (e.g. installing nginx)
+- If you want to keep a vm configuration for future use, you can use an AMI (AMIs are more cost efficient than just stopping your ec2)
+- To do this, select your instance, click `Actions`, hover over `Image and templates` and select `Create Image`
+- Name your AMI and go through the menus (once created, your AMI should be accessible in the side menu under AMIs)
+- To create a new ec2 from an AMI, select AMIs(from either the search bar or side menu), highlight your desired AMI and click `Launch instance from AMI` and go through the menus similar to when creating an ec2 from scratch
+- Once complete, your new ec2 should be have all the configurations from the image it was based off
+- `IMPORTANT NOTE`: Remember to update any security groups with the new ec2s ip where necessary    
+
+### Two-Tier Architecture as of Week 4 Day 4
+<br></br>
+![location based services](/Images/2tad.png) 
+
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
 
 - SCP command to copy file from localhost to ec2 on AWS: `scp -i .ssh/<ssh_key_name>.pem -r  path/of/local/file user@target_vm_address:target/path/`
+
+- `sudo kill <pid>` Kills specific process
 
 
 
