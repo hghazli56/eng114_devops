@@ -228,12 +228,70 @@ If we want to run a command or a group of commands multiple times, we can create
 <br></br>
 ![location based services](/Images/2tad.png) 
 
+### Amazon S3
+- S3 is Amazon AWSs Simple Storage Service
+
+- It focusses on high availability and scalability
+
+- S3 also features storage classes e.g. Standard, Clacier, etc
+
+- Standard class: Data stored is actively available
+
+- Clacier class: Data is available on request and takes time to access (`this is a cheaper option than standard and is recommended for data that is infrequently accessed`)
+
+- Offers CRUD functionality using AWSCLI
+
+- S3 can also be used for disaster recovery (DR) by being globally available
+
+- Make s3 bucket(bucket is an instance of s3) `aws s3 mb s3://eng114-hamza-bucket` - remember to use dashes NOT underscores
+
+- List buckets `aws s3 ls`
+
+- Copy file to s3 bucket `aws s3 cp <filename> s3://<s3-bucket-name>`
+
+- Change permission for files on S3 (AWS web dashboard): `click file you want, click permissions, edit permissions to your liking`
+
+- Download file from S3 bucket to current folder: `aws s3 cp s3://<bucket-name>/<filename> .`
+
+- Delete file from S3 bucket: `aws s3 rm s3://<bucket-name>/<filename>`
+
+- Delete S3 bucket: `aws s3 rb s3://<bucket-name>`
+
+### Using python and boto3 to script S3 commands
+
+- boto3 is a python package that lets us run awscli commands in order to interact with aws recourses (e.g.EC2 and S3)
+
+- We must first have awscli setup with the correct access & secret key configurations
+
+- Then we install boto3 `pip install boto3`
+
+- Then we can create .py files execute our scripts (make sure to import boto3)
+
+- See boto3-python-scripts folder for script examples 
+
+
+### Dependencies for AWSCLI on EC2
+- Python3 or above
+
+- awscli
+
+- pip3
+
+- update & upgrade
+
+- AWS access & secret key for data security
+
+- aws configure: accesskeys, secretkeys, region, language
+
+
+
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
 
 - SCP command to copy file from localhost to ec2 on AWS: `scp -i .ssh/<ssh_key_name>.pem -r  path/of/local/file user@target_vm_address:target/path/`
 
 - `sudo kill <pid>` Kills specific process
+
 
 
 
