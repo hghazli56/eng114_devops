@@ -283,7 +283,30 @@ If we want to run a command or a group of commands multiple times, we can create
 
 - aws configure: accesskeys, secretkeys, region, language
 
+### Monitoring and Alert Management
+- CLOUDWATCH can be used to monitor AWS services and works with SNS (Simple Notification Service)
 
+- SQS (Simple Queue Service) can be used to queue requests so that every request can be logged
+
+- Things we can monitor: error logs, budgeting, uptime, access time, response, time security breaches, system test/health, instance's health, resources(CPU itilisation %)
+
+- There are 4 golden signals to look out for: 
+
+### Create SNS notifications on AWS
+
+- To receive email notifications, you will need to create an alarm in Cloudwatch(for a specific instance click `Actions` on instance page,
+
+- Then hover over `Monitor and troubleshoot` and click `Manage cloudwatch alarms`), add conditions and assign to a topic (you can create a new one at this stage under `Alarm notification`)
+
+- Then in SNS click `Subscriptions`, then click `Create subscription`
+
+- Type the topic name you assigned to your alarm under `Topic ARN`
+
+- Under `Protocol`, select `Email` and type the `Endpoint` email address you want to use
+
+- Click `Create subscription` and confirm the subscription when AWS sends an email prompting you to
+
+- Now whenever the alarm conditions are met, that email address will receive a notification
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
