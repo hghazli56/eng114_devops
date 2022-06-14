@@ -294,7 +294,7 @@ If we want to run a command or a group of commands multiple times, we can create
 
 ### Create SNS notifications on AWS
 
-- To receive email notifications, you will need to create an alarm in Cloudwatch(for a specific instance click `Actions` on instance page,
+- To receive email notifications, you will need to create an alarm in Cloudwatch(for a specific instance click `Actions` on instance page
 
 - Then hover over `Monitor and troubleshoot` and click `Manage cloudwatch alarms`), add conditions and assign to a topic (you can create a new one at this stage under `Alarm notification`)
 
@@ -307,6 +307,76 @@ If we want to run a command or a group of commands multiple times, we can create
 - Click `Create subscription` and confirm the subscription when AWS sends an email prompting you to
 
 - Now whenever the alarm conditions are met, that email address will receive a notification
+
+### Create Launch Templates and Autoscaling Groups in AWS 
+
+![location based services](https://miro.medium.com/max/473/1*bNX6_RMgpDEAwQ9l-81rxw.png)
+
+- We usually want to run an online service on multiple, identical servers
+
+- To do this we can use Launch templates
+
+- To create a launch template click on `Launch Templates` under `Instances` in the side menu
+
+- Name your template
+ 
+- Select your base image (can be standalone OS or AMI)
+ 
+- Select the instance type(e.g. t2.micro)
+
+- Add your key under `Key pair(login)` 
+
+- Select a subnet and security groups under `Network settings`
+
+- In `Advanced details` scroll to `user data` and enter any script you want to run on initialisation 
+
+- Click `Create launch template`
+
+- Your template will now be stored in `Launch Templates`
+
+- Now we want to create an auto scaling group
+
+- Click `Auto Scaling Groups` under Auto Scaling
+
+- Name your ASG
+
+- Select the launch template you created earlier and click `Next`
+
+- Select your VPC and any availability zones/ subnets your ASG can use
+
+- Click `Attach to a new load balancer`, select `Application Load Balancer` 
+
+- Click `Internet-facing`
+
+- Under `Listeners and routing`, click `Select new or existing target group` and select or create a new one (this will be the name of your load balancer)
+
+- Click `Next`
+
+- Under `Group size`, select your `Desired capacity`, `Minimum capacity` and `Maximum capacity`
+
+- Under `Scaling policies` click `Target tracking scaling policy` and select your conditions for scaling
+
+- Click `Next` twice and add your tags (these will be the names for your instances)
+
+- Click `Next`, review and finally click `Create Auto Scaling group`
+
+### Setting up alarms for Auto Scaling Groups
+
+- Go to `CloudWatch service` 
+
+- Click `Create alarm`
+
+- Click `Select metric`
+
+- Under `Metrics` click `Auto Scaling`
+
+- Click `Group Metrics`
+
+- Select your metric and fill in your conditions
+
+- Click `Create new topic` and enter `topic name` and ` email endpoint`
+
+
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
