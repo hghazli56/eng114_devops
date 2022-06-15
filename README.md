@@ -415,7 +415,7 @@ If we want to run a command or a group of commands multiple times, we can create
 
 - The larger networks IP range is partitioned and assigned to the subnet  
 
-![Internet gateway](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Subnetting_Concept.svg/400px-Subnetting_Concept.svg.png)
+![Subnetting](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Subnetting_Concept.svg/400px-Subnetting_Concept.svg.png)
 
 
 #### CIDR blocks
@@ -425,7 +425,12 @@ If we want to run a command or a group of commands multiple times, we can create
 
 #### NACLs
 
-- 
+- NACLs (Network Access Control Lists) act as firewalls that control traffic in and out of a subnet
+
+- These work inside a subnets VPC unlike the internet gateway which works on the border of a VPC 
+
+![Internet gateway](https://miro.medium.com/max/762/1*yVmwFH5vr0Y4PXEKHjdPWQ.png)
+
 
 
 
