@@ -429,9 +429,54 @@ If we want to run a command or a group of commands multiple times, we can create
 
 - These work inside a subnets VPC unlike the internet gateway which works on the border of a VPC 
 
-![Internet gateway](https://miro.medium.com/max/762/1*yVmwFH5vr0Y4PXEKHjdPWQ.png)
+- NACLs work on a subnet level while security groups work on an instance level
+
+![NACL](https://miro.medium.com/max/762/1*yVmwFH5vr0Y4PXEKHjdPWQ.png)
 
 
+### Creating and configuring a VPC in AWS with Two-Tier Architecture 
+
+#### Creating a VPC
+
+- Search for VPC in the amazon console and click `Create VPC`
+
+- Enter your VPC name and `IPV4 CIDR`
+
+- Add a tag and click `Create VPC`
+
+#### Creating an Internet Gateway
+
+- In the VPC menu click `Internet Gateways`
+
+- In the VPC menu click `Create internet gateway`
+
+- Name and tag your IG, then click `Create internet gateway`
+
+- Once created, under actions click `Attach to VPC` and select the VPC you want to attach it to
+
+#### Creating a subnet 
+
+- In the VPC menu click `Subnets`
+
+- Select the VPC you want to create your subnet in, set a name, add the IPv4 CIDR block and add a tag and click `Create subnet`
+
+#### Create Routing table
+
+- Under the VPC menu click `Route tables`
+
+- Click `Create route table`
+
+- Name and assign your route table to your VPC and click `Create route table`
+
+- Select your route table from the list and under `subnet associations` associated it with the subnet you want
+
+#### EC2 instances within VPC considerations
+
+- For any instances you do not want facing the internet, `disable auto-assign IPv4` in instance configuration
+ 
+- Remember to use the right IPs for you security group configurations
+
+![2TierVPC diagram](/Images/VPC(2T).png)
 
 
 ### AWS notes

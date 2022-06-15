@@ -31,7 +31,7 @@ sudo systemctl restart nginx
 sudo systemctl enable nginx
 
 # Next we create the environment variable DB_HOST in order for our app to connect to the database through its ip on port 27017
-sudo echo "export DB_HOST='mongodb://3.250.139.104:27017/posts'" >> /etc/bash.bashrc 
+sudo echo "export DB_HOST='mongodb://10.0.18.186:27017/posts'" >> /etc/bash.bashrc 
 source /etc/bash.bashrc
 
 cd
