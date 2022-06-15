@@ -44,6 +44,10 @@ cd repo/eng114_devops/app/app/
 
 sudo apt npm install
 
+npm install
+
+nohup node app.js > /dev/null 2>&1 &
+
 
 
 

@@ -290,7 +290,15 @@ If we want to run a command or a group of commands multiple times, we can create
 
 - Things we can monitor: error logs, budgeting, uptime, access time, response, time security breaches, system test/health, instance's health, resources(CPU itilisation %)
 
-- There are 4 golden signals to look out for: 
+- There are 4 golden signals to look out for when monitoring: 
+
+- Latency
+
+- Traffic
+
+- Errors
+
+- Saturation 
 
 ### Create SNS notifications on AWS
 
@@ -375,6 +383,49 @@ If we want to run a command or a group of commands multiple times, we can create
 - Select your metric and fill in your conditions
 
 - Click `Create new topic` and enter `topic name` and ` email endpoint`
+
+### AWS VPC
+
+#### What is VPC?
+
+- AWS VPC (Virtual Private Cloud) allows you to deploy a network infrastructure on the AWS platform without having to invest in physical hardware (switches, cables, etc.) yourself
+
+- The VPCs created in AWS are isolated (logically) from other networks on the platform
+
+- Subnets, gateways and security groups can be specified within VPCs
+
+- The benefits of VPCs include:
+
+- `Agility`: VPCs can be quickly created, configured and modified wherever you are without any physical installations
+
+- `Security`: You can isolate different parts of your service to different VPCs (e.g. separating a database that holds very important information to another VPC incase the VPC the front end is in is compromised). You can also configure security within your VPC
+
+- `Availability`: AWS customers can benefit from Amazon's SLA (Service Level Agreement) to ensure VPCs are always up and running
+
+#### Internet gateways
+
+- An internet gateway is a component that allows VPCs to communicate with the internet:
+
+![Internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/images/internet-gateway-basics.png)
+
+
+#### Subnets
+
+- Subnets are networks created within a larger network
+
+- The larger networks IP range is partitioned and assigned to the subnet  
+
+![Internet gateway](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Subnetting_Concept.svg/400px-Subnetting_Concept.svg.png)
+
+
+#### CIDR blocks
+
+- CIDR (Classless Inter-Domain Routing) is the process of creating an IP range from the prefix of an ip address and creating IP addresses with the range of suffixes      
+
+
+#### NACLs
+
+- 
 
 
 
