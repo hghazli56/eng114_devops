@@ -480,7 +480,7 @@ If we want to run a command or a group of commands multiple times, we can create
 
 ### CI/CD (and CDE)
 
-![CICDCDE](/Images/CI_CD_CDEdiagram.png)
+![CI/CD/CDE](/Images/CI_CD_CDEdiagram.png)
 
 
 - CI(continuous integration): Continuous Integration is the process of automating changes in code to a system, essentially integrating said changes into the main code base
@@ -499,11 +499,18 @@ If we want to run a command or a group of commands multiple times, we can create
 
 - Accuracy: The element of human error is completely removed (assuming configurations are correct) when carrying out multiple, repeatable tasks
 
+- Essentially services can be released to customers much faster   
+
 #### Jenkins alternatives
 
 - GitLab CI/CD is an alternative to Jenkins with direct access to Github source control
 
 - Cloud computing providers have also begun releasing their own CI/CD server solutions 
+
+### Plans for CI/CD server
+
+![CI/CD plan](/Images/CI-CDplan.png)
+
 
 
 ### AWS notes
