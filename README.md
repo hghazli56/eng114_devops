@@ -493,7 +493,7 @@ If we want to run a command or a group of commands multiple times, we can create
 
 - Jenkins is a software tool built to automate CI/CD allowing for building, testing and deployment to be carried out automatically without human input (This creates a CI/CD pipeline)
 
-##### The benefits of a CI/CD pipeline include:
+#### The benefits of a CI/CD pipeline include:
 
 - Speed: Because processes are automated, integration and deployment of new code can be carried out very quickly
 
