@@ -478,6 +478,33 @@ If we want to run a command or a group of commands multiple times, we can create
 
 ![2TierVPC diagram](/Images/VPC(2T).png)
 
+### CI/CD (and CDE)
+
+![CICDCDE](/Images/CI_CD_CDEdiagram.png)
+
+
+- CI(continuous integration): Continuous Integration is the process of automating changes in code to a system, essentially integrating said changes into the main code base
+
+- CD(continuous delivery): Continuous Delivery takes things a step further and automates the testing of new code integration to ensure the service works as intended. Testing results are accepted or rejected manually    
+
+- CDE(continuous deployment): Continuous Deployment automates what is done with automated test results (either the service update is accepted and pushed to the live environment or rejected and includes automatically generated feedback and results)
+
+#### Jenkins
+
+- Jenkins is a software tool built to automate CI/CD allowing for building, testing and deployment to be carried out automatically without human input (This creates a CI/CD pipeline)
+
+##### The benefits of a CI/CD pipeline include:
+
+- Speed: Because processes are automated, integration and deployment of new code can be carried out very quickly
+
+- Accuracy: The element of human error is completely removed (assuming configurations are correct) when carrying out multiple, repeatable tasks
+
+#### Jenkins alternatives
+
+- GitLab CI/CD is an alternative to Jenkins with direct access to Github source control
+
+- Cloud computing providers have also begun releasing their own CI/CD server solutions 
+
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
