@@ -511,7 +511,61 @@ If we want to run a command or a group of commands multiple times, we can create
 
 ![CI/CD plan](/Images/CI-CDplan.png)
 
+### Create an ssh key 
 
+### Create a webhook to Jenkins on GitHub
+
+- In your repo settings, click `Webhooks`, and click `Add webhook`
+
+- Under `Payload URL` enter the ip address of your Jenkins server (make sure port 8080 is included) and add `/github-webhook/` to the end
+
+- Select `application/json` under `Content type`
+
+- Tick `Active` and click `Add webhook`
+
+### Running builds on Jenkins through GitHub webhooks
+
+- We want to be able to automatically trigger a build on Jenkins whenever we push changes to our remote repository
+
+- To do this, from the Jenkins dashboard we click `New Item`
+
+- Set a name for the job, and click `Freestyle project` then click `OK`
+
+- Add a description
+
+- Tick `Discard old builds` and type `3` next to `Max # of builds to keep`
+
+- Tick `GitHub project` and next to `Project url`, enter the HTTPS code for the online repo (found on GitHub)
+
+- (For Sparta Node App): Click `Restrict where this project can be run` and next to `Label Expression` type `sparta-ubuntu-node`
+
+- Under `Source Code Management` click `Git`
+
+- In `Repositories`, next to `Repository URL` enter the SSH code for your repo (found on GitHub) 
+
+- Next to `Credentials`, click `Add`, then click the `Jenkins` tab that pops up
+
+- On the pop up menu click `SSH Username with private key`
+
+- Next to `Username` enter the name of your key
+
+- Tick `Enter directly` next to `Private Key` and enter the entire contents of the SSH key you set up with your GitHub repo (use file without .pub extension)
+
+- Next to `Branches to build`, specify the name of the branch you want to build from
+
+- Under `Build triggers` click `GitHub hook trigger for GITScm polling`
+
+- (For Sparta Node App): Under `Build Environment` click `Provide Node & npm/ folder to PATH`
+
+- Under `Build` select `Execute Shell` and enter your build commands (e.g. `npm test` or `npm start`)
+
+- If you wish to add post build actions, click `Add Post-build action` and select a type of action or plugin you want to use:
+
+### Using Jenkins to merge to main after a successful build
+
+- Select `Git Publisher` and tick both `Push only If Build Succeeds` and `Merge Results`
+
+- Under branches, next to `Branch to push`, enter the name of the branch you want to merge to (e.g. main) and next to `Target remote name` enter `origin` (this is what will commonly work) 
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
