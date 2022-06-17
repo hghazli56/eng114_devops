@@ -507,7 +507,7 @@ If we want to run a command or a group of commands multiple times, we can create
 
 - Cloud computing providers have also begun releasing their own CI/CD server solutions 
 
-### Plans for CI/CD server
+### Plans for CI/CD Server
 
 ![CI/CD plan](/Images/CI-CDplan.png)
 
