@@ -570,7 +570,9 @@ https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generati
 
 - Under branches, next to `Branch to push`, enter the name of the branch you want to merge to (e.g. main) and next to `Target remote name` enter `origin` (this is what will commonly work) 
 
-testing 3
+### Copying files from Jenkins to ec2
+
+- `rsync -avz -e "ssh -o StrictHostKeyChecking=no" sre_jenkins_cicd/app ubuntu@X.X.X.X:ubuntu/` - This command was run from a Jenkins Git project build 
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
