@@ -570,7 +570,7 @@ https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generati
 
 - Under branches, next to `Branch to push`, enter the name of the branch you want to merge to (e.g. main) and next to `Target remote name` enter `origin` (this is what will commonly work) 
 
-This should show up on main
+testing
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
