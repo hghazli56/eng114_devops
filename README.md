@@ -572,7 +572,24 @@ https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generati
 
 ### Copying files from Jenkins to ec2
 
-- `rsync -avz -e "ssh -o StrictHostKeyChecking=no" sre_jenkins_cicd/app ubuntu@X.X.X.X:ubuntu/` - This command was run from a Jenkins Git project build 
+- `rsync -avz -e "ssh -o StrictHostKeyChecking=no" sre_jenkins_cicd/app ubuntu@X.X.X.X:ubuntu/` - This command was run from a Jenkins Git project build hence why files from online repo are available
+
+### Script for automating app to ec2
+
+- `rsync -avz -e "ssh -o StrictHostKeyChecking=no" sre_jenkins_cicd/app ubuntu@3.249.111.105:ubuntu/` -Copy app code from Jenkins to ec2
+
+- `rsync -avz -e "ssh -o StrictHostKeyChecking=no" user_data_app.sh ubuntu@3.249.111.105:ubuntu/` -Copy provision file from Jenkins to ec2
+
+- `rsync -avz -e "ssh -o StrictHostKeyChecking=no" default ubuntu@3.249.111.105:ubuntu/` -Copy default file from Jenkins to ec2
+
+- `ssh -A -o "StrictHostKeyChecking=no" ubuntu@3.249.111.105 <<EOF` - EOF(end of file: Use this when switching from the Jenkins server to the AWS ec2)
+
+- `cd ubuntu` - cd into where copy command specified the app to be transferred to
+
+- `sudo chmod +x user_data_app.sh`
+
+- `./user_data_app.sh`
+
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
