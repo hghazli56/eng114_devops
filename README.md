@@ -590,6 +590,9 @@ https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generati
 
 - `./user_data_app.sh`
 
+### Build trigger from another job
+
+- When configuring a job you want to trigger from the completion of another job, under `Build Triggers` tick `Build after other projects are built` and next to `Projects to watch` enter the name of the job you want to proceed the one you are configuring
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
