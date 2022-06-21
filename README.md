@@ -590,11 +590,37 @@ https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generati
 
 - `./user_data_app.sh`
 
+- `Important!`: On the EC2 you are deploying to, remember to open port 22 for the Jenkins server 
+
 ### Build trigger from another job
 
 - When configuring a job you want to trigger from the completion of another job, under `Build Triggers` tick `Build after other projects are built` and next to `Projects to watch` enter the name of the job you want to proceed the one you are currently configuring
 
-test 3
+### Creating a Jenkins server (in Ubuntu 18.04)
+
+- First we want to create an AWS EC2 instance with Ubuntu 18.04 installed
+
+- SSH in and update & upgrade
+
+- Next you will need to install Java, see the link below on how to install Java on Ubuntu 18.04:
+
+- https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04#installing-specific-versions-of-openjdk
+
+- To install Jenkins, see the link below:
+
+- https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04
+
+- `IMPORTANT!`: Remember to open port 8080 on your EC2 via security groups in AWS
+
+- Now to configure Jenkins we we can build out NodeJs app:
+
+- In the Jenkins dashboard, click `Manage Jenkins` and click `Manage Plugins`
+
+- Along with the recommended plugins that were installed, search for and install `NodeJs` and `SSH Agent`
+
+- In `Global Tool Configuration`, scroll down to `NodeJs` and click `Add NodeJS`, name your NodeJs installation and select version `13.3.0` (This will allow you to build the app on your Jenkins server for testing) 
+
+
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
