@@ -620,6 +620,70 @@ https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generati
 
 - In `Global Tool Configuration`, scroll down to `NodeJs` and click `Add NodeJS`, name your NodeJs installation and select version `13.3.0` (This will allow you to build the app on your Jenkins server for testing) 
 
+### Infrastructure as Code (Iac)
+
+#### What is IaC?
+- IaC is the process of provisioning and managing data center infrastructure through machine readable definition files as opposed to physical hardware configuration 
+
+#### Benefits of IaC
+- Speed: Implementing IaC especially for large and complex infrastructure is much quicker than hand-configuring hardware
+
+- Ease of modularity: Changing your infrastructure is a case of editing a definition file
+
+- Self documentation: Documentation is important, having your infrastructure defined in a machine-readable file kills 2 birds with one stone
+
+Other benefits include:
+
+- Cost-optimization
+
+- Consistent environments
+
+#### What IaC tools are available?
+
+- Terraform
+
+- AWS CloudFormation (Other cloud providers also have there own IaC solutions)
+
+- Vagrant
+
+#### What is configuration management and orchestration under IaC?
+
+- Configuration Management: CM involves maintaining consistency (performance, physical and functional attributes, etc.) with original design
+
+- Configuration Orchestration: CO is the process of automating the provision of infrastructure with IaC
+
+#### What is Ansible?
+
+- Ansible is an open-source, configuration management and application-deployment tool which enables IaC
+
+The benefits of Ansible include:
+
+- Simplicity: Ansible is an easy-to-use tool with no coding knowledge needed
+
+- Automation: Ansible allows for the automation of provisioning on the cloud, configuration management and application deployment
+
+### How does Ansible, Terraform and IaC fit into Devops?
+
+- DevOps requires creating, updating and changing infrastructure for various environments(development, testing, staging, live)
+
+- These environments are constantly changing so DevOps uses these tools and concepts in order to quickly work with and automate the provisioning of cloud-based infrastructure
+
+#### How does this benefit businesses?
+
+- Time is saved
+
+- Costs are reduced
+
+- Quality and consistency increase
+
+- Product environments can quickly change and adapt
+
+- Products and product changes are delivered quickly to customers
+
+
+
+
+
 
 
 ### AWS notes
