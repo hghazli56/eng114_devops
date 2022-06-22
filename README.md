@@ -658,9 +658,13 @@ Other benefits include:
 
 The benefits of Ansible include:
 
-- Simplicity: Ansible is an easy-to-use tool with no coding knowledge needed
+- Simplicity: Ansible is an easy-to-use tool with no coding knowledge needed (YAML is human readable)
 
 - Automation: Ansible allows for the automation of provisioning on the cloud, configuration management and application deployment
+
+- Versatility: Ansible works with a wide variety of application environments
+
+- Agentless: Ansible does not need to be installed on the nodes Ansible configures
 
 ### How does Ansible, Terraform and IaC fit into Devops?
 
@@ -680,10 +684,35 @@ The benefits of Ansible include:
 
 - Products and product changes are delivered quickly to customers
 
+### Installing Ansible on Ubuntu 18.04
+
+- `sudo apt-get install software-properties-common`
+
+- `sudo apt-add-repository ppa:ansible/ansible`
+
+- `sudo apt-get update -y`
+
+- `sudo apt-get install ansible -y`
+
+- `ansible --version`
+
+- Ping machine in ansible `ansible (group or server name) -m ping`
+
+#### Configuring ansible to allow for ssh into other machines
+
+ - navigate to /ect/ansible
+
+ - sudo vim hosts
+
+ - enter the following:
+ -`[group name]`
+
+- `vm.ip.here.pls ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant`
 
 
+### Vagrant commands
 
-
+- SSH into a VM from another VM: `ssh vagrant@target-ip` - the password you will be prompted for is `vagrant` 
 
 
 ### AWS notes
