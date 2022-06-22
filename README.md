@@ -696,7 +696,9 @@ The benefits of Ansible include:
 
 - `ansible --version`
 
-- Ping machine in ansible `ansible (group or server name) -m ping`
+- Ping machine in ansible `ansible (group or server name or 'all') -m ping`
+
+
 
 #### Configuring ansible to allow for ssh into other machines
 
@@ -705,7 +707,7 @@ The benefits of Ansible include:
  - sudo vim hosts
 
  - enter the following:
- -`[group name]`
+ -`[group name]` - Grouping vms is useful for the configuration of autoscaling groups
 
 - `vm.ip.here.pls ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant`
 
@@ -714,6 +716,27 @@ The benefits of Ansible include:
 
 - SSH into a VM from another VM: `ssh vagrant@target-ip` - the password you will be prompted for is `vagrant` 
 
+### Ansible ad-hoc commands
+
+We can run ad-hoc commands through ansible on our nodes from our controller node.
+
+- `ansible web -a "uname -a"` - Get information from specific node or group
+
+- `ansible web -a "date"` - Get timezone of specific node or group
+
+- `ansible web -a "free"` - View free memory of specific node or group
+
+- Copy file to node: `ansible web -m copy -a "src=/etc/ansible/connection_test.txt dest=home/"`
+
+### Ansible playbooks
+
+- We create ansible playbooks in /etc/ansible
+
+- playbooks are in .yml format(YAML)
+
+- run `ansible-playbook playbook_name.yml` to activate playbook commands
+
+- `ansible-playbook playbook_name.yml --syntax-check` - Checks playbook syntax
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
