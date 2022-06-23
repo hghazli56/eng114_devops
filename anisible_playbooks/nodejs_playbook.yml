@@ -30,6 +30,12 @@
       src: /etc/ansible/eng114_devops/sre_jenkins_cicd
       dest: home/
 
-# Restart nginx 
-- name: restart nginx
-  service: name=nginx state=restarted enabled=yes
+# Add db_host env variable
+    - name: Insert a line at the end of a file.
+      lineinfile:
+        path: /etc/bash.bashrc
+        line: export DB_HOST='mongodb://192.168.33.11:27017/posts'
+
+  # Restart nginx 
+  - name: restart nginx
+    service: name=nginx state=restarted enabled=yes

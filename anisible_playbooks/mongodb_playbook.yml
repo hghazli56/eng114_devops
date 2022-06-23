@@ -9,18 +9,13 @@
 # we need sudo access
   become: true
 
-# Install Mongodb
-- name: get apt key
-  apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=EA312927
-
-
 - name: install mongo db
   apt: name=mongodb update_cache=yes
 
 # Copy mongod.conf
   - name: Copy default file to web server
     ansible.builtin.copy:
-      src: /etc/ansible/eng114_devops/mongodb.conf
+      src: /etc/ansible/eng114_devops/mongod.conf
       dest: /etc/mongodb.conf
 
 
