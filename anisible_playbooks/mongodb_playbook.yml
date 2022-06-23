@@ -1,0 +1,29 @@
+---
+
+# who is the agent (name)
+- hosts: db
+
+# we need info about the server
+  gather_facts: yes
+
+# we need sudo access
+  become: true
+
+# Install Mongodb
+- name: get apt key
+  apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=EA312927
+
+
+- name: install mongo db
+  apt: name=mongodb update_cache=yes
+
+# Copy mongod.conf
+  - name: Copy default file to web server
+    ansible.builtin.copy:
+      src: /etc/ansible/eng114_devops/mongodb.conf
+      dest: /etc/mongodb.conf
+
+
+# Restart mondogdb
+  - name: restart mongodb
+    service: name=mongodb state=restarted enabled=yes 
