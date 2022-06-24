@@ -737,6 +737,45 @@ We can run ad-hoc commands through ansible on our nodes from our controller node
 - run `ansible-playbook playbook_name.yml` to activate playbook commands
 
 - `ansible-playbook playbook_name.yml --syntax-check` - Checks playbook syntax
+### 2-tier hybrid architecture with Ansible and AWS
+
+#### Setting up Ansible to ssh into AWS
+
+- Create a new folder in /etc/ansible `sudo mkdir group_vars`
+
+- Within group_vars create a folder named all - `sudo mkdir all`
+
+- `sudo vim pass.yml` - create pass.yml file 
+
+- `sudo ansible-vault create pass.yml`
+
+- Create and confirm a password when prompted
+
+- enter `aws_access_key: <aws_access_key>` in the file
+
+- enter `aws_secret_key: <aws_secret_key>` in the file
+
+- `sudo chmod 666 pass.yml`
+
+#### Generating .pem and .pub keys
+
+- In your .ssh folder on your ansible controller, copy over your .pem file and run `sudo chmod 400 eng114.pem`
+
+- `ssh-keygen -t rsa` will generate a new .pub file, enter a name when prompted and press enter for everything else
+
+#### Adding ec2 to hosts
+
+- Navigate to /etc/ansible
+
+- `sudo vim hosts` and add the following:
+
+- `[aws]`
+
+- `ec2-instance ansible_host=ec2.ip.goes.here ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/eng114.pem`
+
+- `sudo ansible-playbook create_ec2.yml --ask-vault-pass`
+
+
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
