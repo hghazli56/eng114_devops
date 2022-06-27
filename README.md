@@ -773,8 +773,11 @@ We can run ad-hoc commands through ansible on our nodes from our controller node
 
 - `ec2-instance ansible_host=ec2.ip.goes.here ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/eng114.pem`
 
-- `sudo ansible-playbook create_ec2.yml --ask-vault-pass`
+- `sudo ansible-playbook file_name.yml --ask-vault-pass --tags create_ec2`
 
+#### Ansible config on AWS architecture
+
+![CI/CD plan](/Images/ansible_cloud.png)
 
 
 ### AWS notes

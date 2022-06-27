@@ -16,6 +16,12 @@
        controller.vm.hostname = 'controller'
        
        controller.vm.network :private_network, ip: "192.168.33.12"
+
+       controller.vm.provision "file", source: "~/.ssh/ham-acc.pem", destination: "$HOME/"
+
+       controller.vm.provision "file", source: "~/.ssh/ham-acc.pub", destination: "$HOME/"
+
+       controller.vm.provision "file", source: "~/.ssh/ham-acc", destination: "$HOME/"
        
        # config.hostsupdater.aliases = ["development.controller"] 
        

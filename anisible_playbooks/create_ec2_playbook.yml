@@ -5,10 +5,10 @@
   gather_facts: False
 
   vars:
-    key_name: eng114 
+    key_name: hamza-access 
     region: eu-west-1
     image: ami-07b63aa1cfd3bc3a5
-    id: "eng114-hamza-ansible"
+    id: "eng114-hamza-ansible2"
     sec_group: "{{ id }}-sec"
 
   tasks:
@@ -37,7 +37,7 @@
       - name: Upload public key to AWS
         ec2_key:
           name: "{{ key_name }}"
-          key_material: "{{ lookup('file', 'home/vagrant/.ssh/{{ key_name }}.pub') }}"
+          key_material: "{{ lookup('file', '/home/vagrant/.ssh/{{ key_name }}.pub') }}"
           region: "{{ region }}"
           aws_access_key: "{{aws_access_key}}"
           aws_secret_key: "{{aws_secret_key}}"
@@ -74,5 +74,7 @@
           #   Name: App
           # instance_tags:
           #   Name: App
+          instance_tags:
+            Name: eng114-hamza-ansible-ec2b
 
       tags: ['never', 'create_ec2']
