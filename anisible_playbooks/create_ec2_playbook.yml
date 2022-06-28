@@ -1,16 +1,17 @@
 ---
-
 - hosts: localhost
   connection: local
   gather_facts: False
-
+  become: True
   vars:
-    key_name: hamza-access 
+    key_name: hammy3
     region: eu-west-1
-    image: ami-07b63aa1cfd3bc3a5
-    id: "eng114-hamza-ansible2"
-    sec_group: "{{ id }}-sec"
-
+    image:  ami-07b63aa1cfd3bc3a5
+    id: "eng114-hamza-test-71"
+    sec_group: "sg-0252d05b5271f8d56"
+    subnet_id: "subnet-04ab99317bb986d9b"
+# add the following line if ansible by default uses python 2.7
+    #ansible_python_interpreter: /usr/bin/python3
   tasks:
 
     - name: Facts
@@ -23,13 +24,6 @@
           region: "{{ region }}"
         register: result
 
-      - name: Instances ID
-        debug:
-          msg: "ID: {{ item.instance_id }} - State: {{ item.state.name }} - Public DNS: {{ item.public_dns_name }}"
-        loop: "{{ result.instances }}"
-
-      tags: always
-
 
     - name: Provisioning EC2 instances
       block:
@@ -37,44 +31,27 @@
       - name: Upload public key to AWS
         ec2_key:
           name: "{{ key_name }}"
-          key_material: "{{ lookup('file', '/home/vagrant/.ssh/{{ key_name }}.pub') }}"
+          key_material: "{{ lookup('file', '~/.ssh/{{ key_name }}.pub') }}"
           region: "{{ region }}"
           aws_access_key: "{{aws_access_key}}"
           aws_secret_key: "{{aws_secret_key}}"
 
-      - name: Create security group
-        ec2_group:
-          name: "{{ sec_group }}"
-          description: "Sec group for app {{ id }}"
-          region: "{{ region }}"
-          aws_access_key: "{{aws_access_key}}"
-          aws_secret_key: "{{aws_secret_key}}"
-          rules:
-            - proto: tcp
-              ports:
-                - 22
-              cidr_ip: 0.0.0.0/0
-              rule_desc: allow all on ssh port
-        register: result_sec_group
 
       - name: Provision instance(s)
         ec2:
           aws_access_key: "{{aws_access_key}}"
           aws_secret_key: "{{aws_secret_key}}"
-          key_name: "{{ key_name }}"
+          assign_public_ip: true
+          key_name: "{{ key_name }}" #update with pem key
           id: "{{ id }}"
-          group_id: "{{ result_sec_group.group_id }}"
+          vpc_subnet_id: "{{ subnet_id }}"
+          group_id: "{{ sec_group }}"
           image: "{{ image }}"
           instance_type: t2.micro
           region: "{{ region }}"
           wait: true
           count: 1
-          # exact_count: 2
-          # count_tag:
-          #   Name: App
-          # instance_tags:
-          #   Name: App
           instance_tags:
-            Name: eng114-hamza-ansible-ec2b
+            Name: eng114-hamza-test-ec2-71
 
       tags: ['never', 'create_ec2']
