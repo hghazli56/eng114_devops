@@ -1,0 +1,56 @@
+---
+
+- name: tests
+  hosts: webapp
+  become: yes
+  gather_facts: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+
+    - name: Timezone
+      debug:
+        msg: "This machine's timezone is: {{ ansible_date_time.tz }}"
+
+    - name: OS
+      debug:
+        msg: "This machine's OS is: {{ ansible_os_family }}"
+
+
+    - name: update command if OS is Debian
+      ansible.builtin.command: apt update -y
+      when: ansible_facts['os_family'] == "Debian"
+
+
+    - name: update command if  OS is Centos
+      ansible.builtin.command: yum check-update
+      when: ansible_facts['os_family'] == "Centos"
+
+    - name: "Check if NGINX is installed"
+      package_facts:
+        manager: "auto"
+
+    - name: confirm nginx is installed
+      assert:
+        that: "'nginx' in ansible_facts.packages"
+
+
+    - name: Check open ports
+      shell: lsof -i -P -n | grep LISTEN
+      register: port_check_80
+
+    - name: confirm port 80 is listening
+      assert:
+        that: "'*:80 (LISTEN)' in port_check_80.stdout"
+
+
+    - name: Check open ports
+      shell: lsof -i -P -n | grep LISTEN
+      register: port_check_3000
+
+    - name: confirm port 3000 is listening
+      assert:
+        that: "'*:3000 (LISTEN)' in port_check_3000.stdout"
+
+

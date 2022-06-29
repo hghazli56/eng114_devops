@@ -1,7 +1,7 @@
 ---
 
 # who is the agent (name)
-- hosts: web
+- hosts: webapp
 
 # we need info about the server
   gather_facts: yes
@@ -31,10 +31,10 @@
       dest: home/
 
 # Add db_host env variable
-    - name: Insert a line at the end of a file.
-      lineinfile:
-        path: /etc/bash.bashrc
-        line: export DB_HOST='mongodb://192.168.33.11:27017/posts'
+  - name: Insert a line at the end of a file.
+    lineinfile:
+      path: /etc/bash.bashrc
+      line: export DB_HOST='mongodb://192.168.33.11:27017/posts'
 
   # Restart nginx 
   - name: restart nginx
