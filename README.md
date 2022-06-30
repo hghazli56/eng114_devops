@@ -779,6 +779,25 @@ We can run ad-hoc commands through ansible on our nodes from our controller node
 
 ![CI/CD plan](/Images/ansible_cloud.png)
 
+### Terraform 
+
+- Terraform is used exclusively for architecture orchestration
+
+- To start using terraform, install it (type `terraform` in bash to make sure it installed correctly)
+
+- For Terraform to work with aws, in Windows OS, go to edit user (or system) environment variables and enter values for `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_ID`
+
+- Create an empty folder and within bash, navigate into it and type `terraform init` to load terraform plugins
+
+- Now you can create `.tf` files
+
+- `terraform plan` checks .tf file syntax
+
+- `terraform apply` runs the .tf file for orchestration
+
+- `terraform destroy` terminates what has been created (you can specify any .tf file at the end of these commands)
+
+
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
