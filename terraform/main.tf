@@ -71,6 +71,77 @@ resource "aws_route_table_association" "public" {
 }
 
 
+################################################ Create security group (app)
+resource "aws_security_group" "app" {
+  name        = "eng114-hamza-terraform-sg"
+  description = "sg for db instance"
+  vpc_id      = aws_vpc.terraform_vpc.id
+  
+
+    ingress {
+    from_port = "22"
+    to_port   = "22"
+    protocol  = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = "80"
+    to_port   = "80"
+    protocol  = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+   ingress {
+    from_port = "3000"
+    to_port   = "3000"
+    protocol  = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port = "0"
+    to_port   = "0"
+    protocol  = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+ 
+}
+
+
+################################################ Create security group (db)
+resource "aws_security_group" "dp" {
+  name        = "eng114-hamza-terraform-sg "
+  description = "sg for db instance"
+  vpc_id      = aws_vpc.terraform_vpc.id
+  
+
+    ingress {
+    from_port = "22"
+    to_port   = "22"
+    protocol  = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = "27017"
+    to_port   = "27017"
+    protocol  = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  
+
+  egress {
+    from_port = "0"
+    to_port   = "0"
+    protocol  = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+ 
+}
+
+
 
 # Create 
 resource "aws_instance" "app_instance" {
@@ -79,6 +150,8 @@ resource "aws_instance" "app_instance" {
   key_name = "hmz-ans"
 
   subnet_id = aws_subnet.terraform_public_subnet.id
+
+  security_group_id = aws_security_group.app.id
 
 # server size (t2-micro)
 
@@ -89,5 +162,26 @@ resource "aws_instance" "app_instance" {
 # what do we want to name it
  tags = {
     Name = "eng114_hamza_terraform_app"
+ }
+}
+
+resource "aws_instance" "db_instance" {
+  ami = "ami-0c0d1ec1c1277e678"
+  instance_type = "t2.micro"
+  key_name = "hmz-ans"
+
+  subnet_id = aws_subnet.terraform_private_subnet.id
+
+  security_group_id = aws_security_group.db.id
+
+# server size (t2-micro)
+
+# do we need it to have public access
+
+ associate_public_ip_address = true
+
+# what do we want to name it
+ tags = {
+    Name = "eng114_hamza_terraform_db"
  }
 }
