@@ -73,7 +73,7 @@ resource "aws_route_table_association" "public" {
 
 ################################################ Create security group (app)
 resource "aws_security_group" "app" {
-  name        = "eng114-hamza-terraform-sg"
+  name        = "eng114-hamza-terraform-app-sg"
   description = "sg for db instance"
   vpc_id      = aws_vpc.terraform_vpc.id
   
@@ -110,8 +110,8 @@ resource "aws_security_group" "app" {
 
 
 ################################################ Create security group (db)
-resource "aws_security_group" "dp" {
-  name        = "eng114-hamza-terraform-sg "
+resource "aws_security_group" "db" {
+  name        = "eng114-hamza-terraform-db-sg "
   description = "sg for db instance"
   vpc_id      = aws_vpc.terraform_vpc.id
   
@@ -142,46 +142,73 @@ resource "aws_security_group" "dp" {
 }
 
 
+################################################ Create load balancer (app)
+resource "aws_elb" "app_elb" {
+  name = "eng114-hamza-terraform-elb"
+  security_groups = ["${aws_security_group.app.id}"]
+  subnets = ["${aws_subnet.terraform_public_subnet.id}"]
+  cross_zone_load_balancing   = true
+  
+  health_check {
+    healthy_threshold = 2
+    unhealthy_threshold = 2
+    timeout = 3
+    interval = 30
+    target = "HTTP:80/"
+  }
+  
+  listener {
+    lb_port = 80
+    lb_protocol = "http"
+    instance_port = "80"
+    instance_protocol = "http"
+   }
+  }
 
-# Create 
-resource "aws_instance" "app_instance" {
-  ami = "ami-0b47105e3d7fc023e"
+
+##########################################################Create launch template
+  resource "aws_launch_configuration" "app" {
+  name_prefix = "eng114-terraform-ASG-app-"
+  image_id = "ami-0b47105e3d7fc023e" 
   instance_type = "t2.micro"
   key_name = "hmz-ans"
-
-  subnet_id = aws_subnet.terraform_public_subnet.id
-
-  security_group_id = aws_security_group.app.id
-
-# server size (t2-micro)
-
-# do we need it to have public access
-
- associate_public_ip_address = true
-
-# what do we want to name it
- tags = {
-    Name = "eng114_hamza_terraform_app"
- }
+  security_groups = [ "${aws_security_group.app.id}" ]
+  associate_public_ip_address = true
+  
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
-resource "aws_instance" "db_instance" {
-  ami = "ami-0c0d1ec1c1277e678"
-  instance_type = "t2.micro"
-  key_name = "hmz-ans"
 
-  subnet_id = aws_subnet.terraform_private_subnet.id
+#############################################################Create auto scaling group
+resource "aws_autoscaling_group" "app" {
+  name = "${aws_launch_configuration.app.name}-asg"
+  min_size             = 2
+  desired_capacity     = 2
+  max_size             = 3
+  
 
-  security_group_id = aws_security_group.db.id
+  load_balancers = ["${aws_elb.app_elb.id}"]
+  launch_configuration = "${aws_launch_configuration.app.name}"
+  enabled_metrics = [
+    "GroupMinSize",
+    "GroupMaxSize",
+    "GroupDesiredCapacity",
+    "GroupInServiceInstances",
+    "GroupTotalInstances"
+  ]
+  metrics_granularity = "1Minute"
+  vpc_zone_identifier  = ["${aws_subnet.terraform_public_subnet.id}"]# Required to redeploy without an outage.
+  lifecycle {
+    create_before_destroy = true
+  }
+  tag {
+    key                 = "Name"
+    value               = "eng114-hamza-terraform-app-asg"
+    propagate_at_launch = true
+  }
+  
+  }
 
-# server size (t2-micro)
 
-# do we need it to have public access
-
- associate_public_ip_address = true
-
-# what do we want to name it
- tags = {
-    Name = "eng114_hamza_terraform_db"
- }
-}
