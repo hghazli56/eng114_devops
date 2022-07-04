@@ -797,6 +797,27 @@ We can run ad-hoc commands through ansible on our nodes from our controller node
 
 - `terraform destroy` terminates what has been created (you can specify any .tf file at the end of these commands)
 
+### Docker commands
+
+- `docker pull <image-name>` - download an image through docker
+
+- `docker run -d -p 80:80 <image-name>` - run an image in detached mode and port match 
+
+- `winpty docker exec -it <container-id> bash` - access container and its file system
+
+- `docker container commit <container-id> <user-name>/<repo-name>:<tag-name>` - commit container as an image
+
+- `docker push <user-name>/<repo-name>:<tag-name>` - push image to dockerhub repo
+
+- `docker cp <local-path> <container-id>:<path-on-container>` - copy folders or files to container from localhost
+
+- `docker images` - view downloaded docker images 
+
+- `docker ps` - view running docker containers
+
+- `docker rmi <image-name>` - delete specified image
+
+- `docker rm <container-name>` -f - force shutdown docker container (even when running) 
 
 
 ### AWS notes
