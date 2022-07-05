@@ -827,6 +827,8 @@ We can run ad-hoc commands through ansible on our nodes from our controller node
 
 - `docker compose down` - Stop and destroy docker containers started by docker compose file
 
+- See example of docker-compose.yml file in the "docker" folder on this repo (includes comments for context)
+
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
 
