@@ -819,6 +819,13 @@ We can run ad-hoc commands through ansible on our nodes from our controller node
 
 - `docker rm <container-name>` -f - force shutdown docker container (even when running) 
 
+- `docker build -t <image-name:tag> .` - Build an image from a Dockerfile (in Dockerfile you can configure images and create new ones (see dockerfile example))
+
+- ` docker run -d -p <port-num>:<port-num> <image-name:tag>` - Run image as container in detached mode on specified port
+
+- `docker compose up` - Run docker compose .yml file (make sure you are in the directory of the .yml file or point to its path RULE: one docker compose file per folder)
+
+- `docker compose down` - Stop and destroy docker containers started by docker compose file
 
 ### AWS notes
 - Naming conventions: `eng114_hghazli_<resouce type>`

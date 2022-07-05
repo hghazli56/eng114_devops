@@ -1,0 +1,25 @@
+version: "3" 
+services: # This section defines the services (containers we wish to run)
+  nodeapp: # 1st service/container
+    container_name: node_app # This will be the containers name 
+    image: hghazli94/eng114_devops:nodemulti # This is the image the container will be created from
+    ports: # Define open ports
+      - "80:3000" # Mapping port 80 on localhost to port 3000 on container
+    links: # Linking to other container(s)
+      - mongodb # link to mongodb container
+    depends_on: # Create depencies (whatever dependencies are defined, docker-compose will start thos first)
+      - mongodb # In this case, docker-compose checks that the 'mongodb' container has started before creating 'nodeapp' 
+    environment: # Set environment variables
+      DB_HOST: mongodb://mongodb:27017/posts # 'DB_HOST' is created with the address of the db data NOTE: an IP is not used here but instead, the container's name
+    networks: # Put container on a network(s)
+      - node-webapp-network # Network name specified here
+  mongodb: # Second service/container
+    container_name: mongodb # Second container's name
+    image: mongo:latest # Image the container is created from 
+    ports:
+      - "27017:27017" # Port 27017 is is defined here (mogodb specialised port)
+    networks: # This container will also be put on a network
+      - node-webapp-network # The same network as 'node_app'
+networks: # Here we define any networks we want to create
+  node-webapp-network: # We name the network
+    driver: bridge # We specify the type of network we want (in this case a bridge; a direct route between containers within this network)
