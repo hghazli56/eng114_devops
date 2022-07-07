@@ -829,7 +829,36 @@ We can run ad-hoc commands through ansible on our nodes from our controller node
 
 - See example of docker-compose.yml file in the "docker" folder on this repo (includes comments for context)
 
-### AWS notes
+### Kubernetes(K8s)
+
+#### What is Kubernetes?
+- Kubernetes is a container orchestration tool allowing for the deployment, scaling and management of containerised applications and services
+
+#### How does Kubernetes work?
+
+- A Kubernetes environment consists of:
+- A control plane(also called a master)
+- A distributed storage system (etcd) for key-value storage which keeps cluster state consistent
+- Cluster nodes(AKA Kubelets) which contain pods(container instances) and services(which are used forward traffic to a set of pods)
+- A set number of pods can be specified within a Kubelet allowing for Kubernetes' self-healing feature which ensures the number of pods required are always running should a failure occur
+
+![CI/CD plan](/Images/k8_architecture.jpg)
+
+#### Kubernetes commands
+
+- `kubectl get deploy` - view container configurations 
+
+- `kubectl get service` - view traffic forwarding services
+
+- `kubectl delete <resource-type> <resource name>` - delete resources
+
+- `kubectl create -f <file-name>.yml` - create configurations and services defined in a specified YAML file
+
+#### Code blocks
+
+- 
+
+### misc notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
 
 - SCP command to copy file from localhost to ec2 on AWS: `scp -i .ssh/<ssh_key_name>.pem -r  path/of/local/file user@target_vm_address:target/path/`

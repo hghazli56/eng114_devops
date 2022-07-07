@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: node-app
+spec:
+  selector: 
+    matchLabels: 
+      app: node-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers: 
+      - name: nginx
+        image: hghazli94/eng114_devops:nodemulti
+        env:
+        - name: DB_HOST
+          value: mongodb://10.98.213.98:27017/posts
+
+        ports: 
+          - containerPort: 3000
+        
+        imagePullPolicy: Always
