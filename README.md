@@ -856,7 +856,7 @@ We can run ad-hoc commands through ansible on our nodes from our controller node
 
 #### Code blocks
 
-- 
+- https://github.com/hghazli56/eng114_devops/tree/main/docker-kubernetes/k8_nodeapp 
 
 ### misc notes
 - Naming conventions: `eng114_hghazli_<resouce type>`
